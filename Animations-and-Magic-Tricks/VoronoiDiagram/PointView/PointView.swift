@@ -13,7 +13,7 @@ final class PointView: UIView {
 
     enum Constants {
         static let defaultBackgroundColor: UIColor = Color.black
-        static let defaultRadius: CGFloat = 10.0
+        static let defaultRadius: CGFloat = 5.0
     }
 
     // MARK: - Private calculated properties

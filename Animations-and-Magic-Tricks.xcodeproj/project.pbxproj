@@ -19,6 +19,7 @@
 		090C368928C66ED900053CF4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C368828C66ED900053CF4 /* Color.swift */; };
 		090C368D28C670B400053CF4 /* PointViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C368C28C670B400053CF4 /* PointViewModel.swift */; };
 		090C368F28C67F3000053CF4 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C368E28C67F3000053CF4 /* CGRect.swift */; };
+		090C369128C6862E00053CF4 /* VoronoiDiagramBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C369028C6862E00053CF4 /* VoronoiDiagramBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		090C368828C66ED900053CF4 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		090C368C28C670B400053CF4 /* PointViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointViewModel.swift; sourceTree = "<group>"; };
 		090C368E28C67F3000053CF4 /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
+		090C369028C6862E00053CF4 /* VoronoiDiagramBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoronoiDiagramBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				090C368A28C6708C00053CF4 /* PointView */,
-				090C368328C66D8400053CF4 /* Logic */,
+				090C368328C66D8400053CF4 /* VoronoiDiagramBuilder */,
 			);
 			path = VoronoiDiagram;
 			sourceTree = "<group>";
@@ -152,11 +154,12 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		090C368328C66D8400053CF4 /* Logic */ = {
+		090C368328C66D8400053CF4 /* VoronoiDiagramBuilder */ = {
 			isa = PBXGroup;
 			children = (
+				090C369028C6862E00053CF4 /* VoronoiDiagramBuilder.swift */,
 			);
-			path = Logic;
+			path = VoronoiDiagramBuilder;
 			sourceTree = "<group>";
 		};
 		090C368628C66EB500053CF4 /* Extensions */ = {
@@ -328,6 +331,7 @@
 				090C368D28C670B400053CF4 /* PointViewModel.swift in Sources */,
 				090C368928C66ED900053CF4 /* Color.swift in Sources */,
 				090C368528C66E1900053CF4 /* PointView.swift in Sources */,
+				090C369128C6862E00053CF4 /* VoronoiDiagramBuilder.swift in Sources */,
 				090C368F28C67F3000053CF4 /* CGRect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
