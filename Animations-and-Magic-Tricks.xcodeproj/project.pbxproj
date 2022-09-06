@@ -20,6 +20,11 @@
 		090C368D28C670B400053CF4 /* PointViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C368C28C670B400053CF4 /* PointViewModel.swift */; };
 		090C368F28C67F3000053CF4 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C368E28C67F3000053CF4 /* CGRect.swift */; };
 		090C369128C6862E00053CF4 /* VoronoiDiagramBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C369028C6862E00053CF4 /* VoronoiDiagramBuilder.swift */; };
+		090C369428C68D9700053CF4 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C369328C68D9700053CF4 /* Line.swift */; };
+		090C369628C68E9600053CF4 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C369528C68E9600053CF4 /* CGPoint.swift */; };
+		090C369928C68F3600053CF4 /* Locus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C369828C68F3600053CF4 /* Locus.swift */; };
+		090C369B28C7AB7900053CF4 /* VoronoiDiagramBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C369A28C7AB7900053CF4 /* VoronoiDiagramBuilderTests.swift */; };
+		090C369D28C7ABF100053CF4 /* CGPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C369C28C7ABF100053CF4 /* CGPointTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +62,11 @@
 		090C368C28C670B400053CF4 /* PointViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointViewModel.swift; sourceTree = "<group>"; };
 		090C368E28C67F3000053CF4 /* CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
 		090C369028C6862E00053CF4 /* VoronoiDiagramBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoronoiDiagramBuilder.swift; sourceTree = "<group>"; };
+		090C369328C68D9700053CF4 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		090C369528C68E9600053CF4 /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
+		090C369828C68F3600053CF4 /* Locus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locus.swift; sourceTree = "<group>"; };
+		090C369A28C7AB7900053CF4 /* VoronoiDiagramBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoronoiDiagramBuilderTests.swift; sourceTree = "<group>"; };
+		090C369C28C7ABF100053CF4 /* CGPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				090C366828C6689800053CF4 /* Animations_and_Magic_TricksTests.swift */,
+				090C369A28C7AB7900053CF4 /* VoronoiDiagramBuilderTests.swift */,
+				090C369C28C7ABF100053CF4 /* CGPointTests.swift */,
 			);
 			path = "Animations-and-Magic-TricksTests";
 			sourceTree = "<group>";
@@ -157,6 +169,8 @@
 		090C368328C66D8400053CF4 /* VoronoiDiagramBuilder */ = {
 			isa = PBXGroup;
 			children = (
+				090C369728C68F2100053CF4 /* Locus */,
+				090C369228C68D8D00053CF4 /* Line */,
 				090C369028C6862E00053CF4 /* VoronoiDiagramBuilder.swift */,
 			);
 			path = VoronoiDiagramBuilder;
@@ -166,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				090C368E28C67F3000053CF4 /* CGRect.swift */,
+				090C369528C68E9600053CF4 /* CGPoint.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -193,6 +208,22 @@
 				090C368C28C670B400053CF4 /* PointViewModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		090C369228C68D8D00053CF4 /* Line */ = {
+			isa = PBXGroup;
+			children = (
+				090C369328C68D9700053CF4 /* Line.swift */,
+			);
+			path = Line;
+			sourceTree = "<group>";
+		};
+		090C369728C68F2100053CF4 /* Locus */ = {
+			isa = PBXGroup;
+			children = (
+				090C369828C68F3600053CF4 /* Locus.swift */,
+			);
+			path = Locus;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,7 +362,10 @@
 				090C368D28C670B400053CF4 /* PointViewModel.swift in Sources */,
 				090C368928C66ED900053CF4 /* Color.swift in Sources */,
 				090C368528C66E1900053CF4 /* PointView.swift in Sources */,
+				090C369428C68D9700053CF4 /* Line.swift in Sources */,
 				090C369128C6862E00053CF4 /* VoronoiDiagramBuilder.swift in Sources */,
+				090C369928C68F3600053CF4 /* Locus.swift in Sources */,
+				090C369628C68E9600053CF4 /* CGPoint.swift in Sources */,
 				090C368F28C67F3000053CF4 /* CGRect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +374,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				090C369B28C7AB7900053CF4 /* VoronoiDiagramBuilderTests.swift in Sources */,
+				090C369D28C7ABF100053CF4 /* CGPointTests.swift in Sources */,
 				090C366928C6689800053CF4 /* Animations_and_Magic_TricksTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
