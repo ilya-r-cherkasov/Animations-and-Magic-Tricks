@@ -6,6 +6,7 @@
 //
 
 import CoreGraphics
+import UIKit
 
 final class VoronoiDiagramBuilder {
 
@@ -15,6 +16,45 @@ final class VoronoiDiagramBuilder {
     private(set) var locuses = [Locus]()
 
     // MARK: - Private properties
+
+    private var screenBounds = UIScreen.main.bounds
+
+    private var topEdgeLine: Line {
+        AG.calculateLineBy(
+            p1: .zero,
+            p2: CGPoint(x: screenBounds.maxX, y: .zero)
+        )
+    }
+
+    private var leadingEdgeLine: Line {
+        AG.calculateLineBy(
+            p1: .zero,
+            p2: CGPoint(x: .zero, y: screenBounds.maxY)
+        )
+    }
+
+    private var trailingEdgeLine: Line {
+        AG.calculateLineBy(
+            p1: CGPoint(x: screenBounds.maxX, y: .zero),
+            p2: CGPoint(x: screenBounds.maxX, y: screenBounds.maxY)
+        )
+    }
+
+    private var bottomEdgeLine: Line {
+        AG.calculateLineBy(
+            p1: CGPoint(x: .zero, y: screenBounds.maxY),
+            p2: CGPoint(x: screenBounds.maxX, y: screenBounds.maxY)
+        )
+    }
+
+    private var edgesLines: [Line] {
+        [
+            topEdgeLine,
+            leadingEdgeLine,
+            trailingEdgeLine,
+            bottomEdgeLine
+        ]
+    }
 
     // MARK: - Methods
 
@@ -40,6 +80,7 @@ private extension VoronoiDiagramBuilder {
     func calculateIntersectionPoints(for site: CGPoint) -> [CGPoint] {
         var perpendiculars = calculateMedianPerpendiculars(for: site)
         var intersectionPoints = [CGPoint]()
+        let edgesPoints = calculateEdgesPoints(with: perpendiculars)
         perpendiculars.forEach { perpendicular in
             let otherPerpendiculars = perpendiculars.filter { $0 != perpendicular }
             otherPerpendiculars.forEach { otherPerpendicular in
@@ -50,7 +91,20 @@ private extension VoronoiDiagramBuilder {
             }
             perpendiculars.removeFirst()
         }
-        return intersectionPoints
+        return intersectionPoints + edgesPoints
+    }
+
+    func calculateEdgesPoints(with lines: [Line]) -> [CGPoint] {
+        var edgesPoints = [CGPoint]()
+        edgesLines.forEach { edgeLine in
+            lines.forEach { line in
+                let relationship = AG.calculateLinesRelationship(for: edgeLine, and: line)
+                if case .intersect(let intersectionPoint) = relationship {
+                    edgesPoints.append(intersectionPoint)
+                }
+            }
+        }
+        return edgesPoints
     }
     
 }

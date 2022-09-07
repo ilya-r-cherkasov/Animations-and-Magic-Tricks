@@ -45,4 +45,13 @@ final class AnalyticalGeometryTests: XCTestCase {
         }
     }
 
+    func testCalculateLineByTwoPoint() {
+        let line = AG.calculateLineBy(
+            p1: CGPoint(x: -6, y: -2),
+            p2: CGPoint(x: -4, y: 4)
+        )
+        let trueLine = Line(A: -3, B: 1, C: -16)
+        XCTAssertEqual(trueLine, line)
+    }
+
 }

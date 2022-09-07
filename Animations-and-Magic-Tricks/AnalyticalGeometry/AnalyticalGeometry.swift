@@ -19,6 +19,14 @@ class AnalyticalGeometry {
         return Line(A, B, C)
     }
 
+    static func calculateLineBy(p1: CGPoint, p2: CGPoint) -> Line {
+        Line(
+            A: p1.y - p2.y,
+            B: p2.x - p1.x,
+            C: p1.x * p2.y - p2.x * p1.y
+        )
+    }
+
     static func calculateLinesRelationship(for l1: Line, and l2: Line) -> LinesRelationship {
         guard l1 != l2 else {
             return .match

@@ -9,11 +9,15 @@ import CoreGraphics
 
 struct Line {
 
+    // MARK: - Properties
+
     // Coefficients of common line equation
     // Ax + By + C = 0
     let A: CGFloat
     let B: CGFloat
     let C: CGFloat
+
+    // MARK: - Initialization
 
     init(A: CGFloat, B: CGFloat, C: CGFloat) {
         self.A = A
@@ -27,6 +31,8 @@ struct Line {
 
 }
 
+// MARK: - Methods
+
 extension Line {
 
     func parallel(to line: Line) -> Bool {
@@ -34,6 +40,8 @@ extension Line {
     }
 
 }
+
+// MARK: - Equatable
 
 extension Line: Equatable {
 
