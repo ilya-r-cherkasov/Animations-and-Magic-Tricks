@@ -43,4 +43,9 @@ class AnalyticalGeometry {
         return .intersect(intersectPoint)
     }
 
+    static func detectTwoPointsBelongToSameHalfPlane(line: Line, p1: CGPoint, p2: CGPoint) -> Bool {
+        let (A, B, C) = line.coefficients
+        return (A * p1.x + B * p1.y + C) * (A * p2.x + B * p2.y + C) >= 0
+    }
+
 }

@@ -17,6 +17,10 @@ struct Line {
     let B: CGFloat
     let C: CGFloat
 
+    var coefficients: (A: CGFloat, B: CGFloat, C: CGFloat) {
+        (A, B, C)
+    }
+
     // MARK: - Initialization
 
     init(A: CGFloat, B: CGFloat, C: CGFloat) {

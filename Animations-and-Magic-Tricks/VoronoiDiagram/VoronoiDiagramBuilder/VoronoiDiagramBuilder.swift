@@ -106,6 +106,24 @@ private extension VoronoiDiagramBuilder {
         }
         return edgesPoints
     }
+
+    func calcutateLocusVertexes(for site: CGPoint) -> [CGPoint] {
+        var vertexes = [CGPoint]()
+        let perpendiculars = calculateMedianPerpendiculars(for: site)
+        let intersectionPoints = calculateIntersectionPoints(for: site)
+        perpendiculars.forEach { perpendicular in
+            intersectionPoints.forEach { intersectionPoint in
+                if AG.detectTwoPointsBelongToSameHalfPlane(
+                    line: perpendicular,
+                    p1: intersectionPoint,
+                    p2: site
+                ) {
+                    vertexes.append(intersectionPoint)
+                }
+            }
+        }
+        return vertexes
+    }
     
 }
 
