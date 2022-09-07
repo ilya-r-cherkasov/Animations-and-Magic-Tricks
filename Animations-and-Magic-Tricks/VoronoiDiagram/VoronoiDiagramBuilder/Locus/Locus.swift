@@ -11,13 +11,16 @@ struct Locus {
 
     // MARK: - Properties
 
-    let point: CGPoint
+    // locus building for this point (named site)
+    let site: CGPoint
+
+    //vertex of locus
     let vertexes: [CGPoint]
 
     // MARK: - Initialization
 
-    init(point: CGPoint, vertexes: [CGPoint]) {
-        self.point = point
+    init(site: CGPoint, vertexes: [CGPoint]) {
+        self.site = site
         self.vertexes = vertexes
     }
     

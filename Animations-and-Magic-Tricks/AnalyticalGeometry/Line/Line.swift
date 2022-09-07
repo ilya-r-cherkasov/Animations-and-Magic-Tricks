@@ -27,10 +27,19 @@ struct Line {
 
 }
 
+extension Line {
+
+    func parallel(to line: Line) -> Bool {
+        self.A * line.B  == self.B * line.A
+    }
+
+}
+
 extension Line: Equatable {
 
     static func == (lhs: Line, rhs: Line) -> Bool {
-        lhs.A / rhs.A == lhs.B / rhs.B && lhs.B / rhs.B == lhs.C / rhs.C
+        lhs.A * rhs.B  == lhs.B * rhs.A
+        && lhs.B * rhs.C == lhs.C * rhs.B
     }
 
 }
