@@ -17,42 +17,12 @@ final class VoronoiDiagramBuilder {
 
     // MARK: - Private properties
 
-    private var screenBounds = UIScreen.main.bounds
-
-    private var topEdgeLine: Line {
-        AG.calculateLineBy(
-            p1: .zero,
-            p2: CGPoint(x: screenBounds.maxX, y: .zero)
-        )
-    }
-
-    private var leadingEdgeLine: Line {
-        AG.calculateLineBy(
-            p1: .zero,
-            p2: CGPoint(x: .zero, y: screenBounds.maxY)
-        )
-    }
-
-    private var trailingEdgeLine: Line {
-        AG.calculateLineBy(
-            p1: CGPoint(x: screenBounds.maxX, y: .zero),
-            p2: CGPoint(x: screenBounds.maxX, y: screenBounds.maxY)
-        )
-    }
-
-    private var bottomEdgeLine: Line {
-        AG.calculateLineBy(
-            p1: CGPoint(x: .zero, y: screenBounds.maxY),
-            p2: CGPoint(x: screenBounds.maxX, y: screenBounds.maxY)
-        )
-    }
-
     private var edgesLines: [Line] {
         [
-            topEdgeLine,
-            leadingEdgeLine,
-            trailingEdgeLine,
-            bottomEdgeLine
+            AG.topEdgeLine,
+            AG.leadingEdgeLine,
+            AG.trailingEdgeLine,
+            AG.bottomEdgeLine
         ]
     }
 
@@ -60,6 +30,10 @@ final class VoronoiDiagramBuilder {
 
     func addPoint(_ point: CGPoint) {
         points.append(point)
+    }
+
+    func testCalcutateLocusVertexes(for site: CGPoint) -> [CGPoint] {
+        calcutateLocusVertexes(for: site)
     }
 
 }
@@ -80,7 +54,6 @@ private extension VoronoiDiagramBuilder {
     func calculateIntersectionPoints(for site: CGPoint) -> [CGPoint] {
         var perpendiculars = calculateMedianPerpendiculars(for: site)
         var intersectionPoints = [CGPoint]()
-        let edgesPoints = calculateEdgesPoints(with: perpendiculars)
         perpendiculars.forEach { perpendicular in
             let otherPerpendiculars = perpendiculars.filter { $0 != perpendicular }
             otherPerpendiculars.forEach { otherPerpendicular in
@@ -91,7 +64,7 @@ private extension VoronoiDiagramBuilder {
             }
             perpendiculars.removeFirst()
         }
-        return intersectionPoints + edgesPoints
+        return intersectionPoints
     }
 
     func calculateEdgesPoints(with lines: [Line]) -> [CGPoint] {
@@ -99,7 +72,12 @@ private extension VoronoiDiagramBuilder {
         edgesLines.forEach { edgeLine in
             lines.forEach { line in
                 let relationship = AG.calculateLinesRelationship(for: edgeLine, and: line)
-                if case .intersect(let intersectionPoint) = relationship {
+                if
+                    case .intersect(let intersectionPoint) = relationship,
+                    UIScreen.main.bounds
+                        .insetBy(dx: -20, dy: -20)
+                        .contains(intersectionPoint)
+                {
                     edgesPoints.append(intersectionPoint)
                 }
             }
@@ -111,20 +89,19 @@ private extension VoronoiDiagramBuilder {
         var vertexes = [CGPoint]()
         let perpendiculars = calculateMedianPerpendiculars(for: site)
         let intersectionPoints = calculateIntersectionPoints(for: site)
-        perpendiculars.forEach { perpendicular in
-            intersectionPoints.forEach { intersectionPoint in
-                if AG.detectTwoPointsBelongToSameHalfPlane(
-                    line: perpendicular,
-                    p1: intersectionPoint,
-                    p2: site
-                ) {
-                    vertexes.append(intersectionPoint)
-                }
+        let edgesPoints = calculateEdgesPoints(with: perpendiculars)
+        (intersectionPoints + edgesPoints).forEach { point in
+            if AG.detectTwoPointsBelongToSameHalfPlanes(
+                lines: perpendiculars,
+                p1: point,
+                p2: site
+            ) {
+                vertexes.append(point)
             }
         }
         return vertexes
     }
-    
+
 }
 
 // MARK: - API for Tests

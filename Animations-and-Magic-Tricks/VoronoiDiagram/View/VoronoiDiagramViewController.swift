@@ -9,6 +9,10 @@ import UIKit
 
 class VoronoiDiagramViewController: UIViewController {
 
+    // MARK: - Subviews
+
+    private let locusesView = LocusesView(frame: UIScreen.main.bounds)
+
     // MARK: - Private properties
 
     private let diagramBuilder = VoronoiDiagramBuilder()
@@ -21,6 +25,8 @@ class VoronoiDiagramViewController: UIViewController {
         view.backgroundColor = .white
         configureTapGecture()
         view.addGestureRecognizer(tapGecture)
+        view.addSubview(locusesView)
+        locusesView.backgroundColor = .lightGray
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +50,11 @@ private extension VoronoiDiagramViewController {
         point.configure()
         point.center = coordinate
         diagramBuilder.addPoint(coordinate)
+        locusesView.locuses.removeAll()
+        diagramBuilder.points.forEach { cite in
+            let vertexes = diagramBuilder.testCalcutateLocusVertexes(for: cite)
+            locusesView.locuses.append(vertexes)
+        }
     }
 
 }

@@ -6,13 +6,16 @@
 //
 
 import CoreGraphics
+import UIKit
 
 struct PointViewModel {
 
     var radius: CGFloat?
+    var color: UIColor?
 
-    init(radius: CGFloat) {
+    init(radius: CGFloat, color: UIColor) {
         self.radius = radius
+        self.color = color
     }
 
 }

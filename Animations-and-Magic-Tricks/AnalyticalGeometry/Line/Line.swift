@@ -43,6 +43,10 @@ extension Line {
         self.A * line.B  == self.B * line.A
     }
 
+    func substitute(point: CGPoint) -> CGFloat {
+        A * point.x + B * point.y + C
+    }
+
 }
 
 // MARK: - Equatable

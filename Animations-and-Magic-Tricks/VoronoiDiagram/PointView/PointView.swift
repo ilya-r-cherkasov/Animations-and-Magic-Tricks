@@ -47,6 +47,7 @@ final class PointView: UIView {
 
     func configure(with model: PointViewModel? = nil) {
         _radius = model?.radius
+        backgroundColor = model?.color ?? Constants.defaultBackgroundColor
     }
 
     // MARK: - UIView

@@ -54,7 +54,17 @@ final class AnalyticalGeometryTests: XCTestCase {
         XCTAssertEqual(trueLine, line)
     }
 
-    func testTwoPointsBelongToSameHalfPlane() {
+    func testTwoPointsBelongToSameHalfPlaneNum1() {
+        let line = Line(A: -3, B: 1, C: -16)
+        let result = AG.detectTwoPointsBelongToSameHalfPlane(
+            line: line,
+            p1: CGPoint(x: -5.0, y: 6.0),
+            p2: CGPoint(x: -6.0, y: 4.0)
+        )
+        XCTAssertTrue(result)
+    }
+
+    func testTwoPointsBelongToSameHalfPlaneNum2() {
         let line = Line(A: -3, B: 1, C: -16)
         let result = AG.detectTwoPointsBelongToSameHalfPlane(
             line: line,

@@ -6,10 +6,47 @@
 //
 
 import CoreGraphics
+import UIKit
 
 typealias AG = AnalyticalGeometry
 
 class AnalyticalGeometry {
+
+    // MARK: - Static roperties
+
+    static var topEdgeLine: Line {
+        AG.calculateLineBy(
+            p1: .zero,
+            p2: CGPoint(x: screenBounds.maxX, y: .zero)
+        )
+    }
+
+    static var leadingEdgeLine: Line {
+        AG.calculateLineBy(
+            p1: .zero,
+            p2: CGPoint(x: .zero, y: screenBounds.maxY)
+        )
+    }
+
+    static var trailingEdgeLine: Line {
+        AG.calculateLineBy(
+            p1: CGPoint(x: screenBounds.maxX, y: .zero),
+            p2: CGPoint(x: screenBounds.maxX, y: screenBounds.maxY)
+        )
+    }
+
+    static var bottomEdgeLine: Line {
+        AG.calculateLineBy(
+            p1: CGPoint(x: .zero, y: screenBounds.maxY),
+            p2: CGPoint(x: screenBounds.maxX, y: screenBounds.maxY)
+        )
+    }
+
+    // MARK: - Private properties
+
+    private static var screenBounds = UIScreen.main.bounds
+
+    // MARK: - Static functions
 
     static func calculateMedianPerpendicular(p1: CGPoint, p2: CGPoint) -> Line {
         let A = p2.x - p1.x
@@ -43,9 +80,20 @@ class AnalyticalGeometry {
         return .intersect(intersectPoint)
     }
 
-    static func detectTwoPointsBelongToSameHalfPlane(line: Line, p1: CGPoint, p2: CGPoint) -> Bool {
-        let (A, B, C) = line.coefficients
-        return (A * p1.x + B * p1.y + C) * (A * p2.x + B * p2.y + C) >= 0
+    static func detectTwoPointsBelongToSameHalfPlane(line: Line,
+                                                     p1: CGPoint,
+                                                     p2: CGPoint) -> Bool {
+        if p1.belong(to: line) || p2.belong(to: line) {
+            return true
+        } else {
+            return line.substitute(point: p1) * line.substitute(point: p2) >= 0
+        }
+    }
+
+    static func detectTwoPointsBelongToSameHalfPlanes(lines: [Line], p1: CGPoint, p2: CGPoint) -> Bool {
+        lines.reduce(true) { partialResult, line in
+            partialResult && detectTwoPointsBelongToSameHalfPlane(line: line, p1: p1, p2: p2)
+        }
     }
 
 }

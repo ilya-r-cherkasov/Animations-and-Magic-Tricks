@@ -28,6 +28,10 @@
 		09D8B4B228C9033C0070D1AC /* AnalyticalGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8B4B128C9033C0070D1AC /* AnalyticalGeometry.swift */; };
 		09D8B4B428C904B40070D1AC /* AnalyticalGeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8B4B328C904B40070D1AC /* AnalyticalGeometryTests.swift */; };
 		09D8B4B628C920FE0070D1AC /* LinesRelationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8B4B528C920FE0070D1AC /* LinesRelationship.swift */; };
+		09D8B4B928CA35F20070D1AC /* LocusesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8B4B828CA35F20070D1AC /* LocusesView.swift */; };
+		09D8B4BC28CA37E30070D1AC /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8B4BB28CA37E30070D1AC /* UIColor.swift */; };
+		09D8B4BF28CA5B850070D1AC /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8B4BE28CA5B850070D1AC /* Array.swift */; };
+		09D8B4C128CA5CAA0070D1AC /* ArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8B4C028CA5CAA0070D1AC /* ArrayTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +77,10 @@
 		09D8B4B128C9033C0070D1AC /* AnalyticalGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticalGeometry.swift; sourceTree = "<group>"; };
 		09D8B4B328C904B40070D1AC /* AnalyticalGeometryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticalGeometryTests.swift; sourceTree = "<group>"; };
 		09D8B4B528C920FE0070D1AC /* LinesRelationship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesRelationship.swift; sourceTree = "<group>"; };
+		09D8B4B828CA35F20070D1AC /* LocusesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocusesView.swift; sourceTree = "<group>"; };
+		09D8B4BB28CA37E30070D1AC /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		09D8B4BE28CA5B850070D1AC /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		09D8B4C028CA5CAA0070D1AC /* ArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,12 +131,11 @@
 		090C365028C6689600053CF4 /* Animations-and-Magic-Tricks */ = {
 			isa = PBXGroup;
 			children = (
+				09D8B4BA28CA37DA0070D1AC /* Extensions */,
 				09D8B4B028C903090070D1AC /* AnalyticalGeometry */,
 				090C368728C66EC100053CF4 /* Color */,
-				090C368628C66EB500053CF4 /* Extensions */,
 				090C368228C66C8800053CF4 /* App */,
 				090C368128C66C7900053CF4 /* VoronoiDiagram */,
-				090C365528C6689600053CF4 /* VoronoiDiagramViewController.swift */,
 				090C365A28C6689700053CF4 /* Assets.xcassets */,
 				090C365C28C6689700053CF4 /* LaunchScreen.storyboard */,
 				090C365F28C6689700053CF4 /* Info.plist */,
@@ -143,6 +150,7 @@
 				090C369A28C7AB7900053CF4 /* VoronoiDiagramBuilderTests.swift */,
 				09D8B4B328C904B40070D1AC /* AnalyticalGeometryTests.swift */,
 				090C369C28C7ABF100053CF4 /* CGPointTests.swift */,
+				09D8B4C028CA5CAA0070D1AC /* ArrayTests.swift */,
 			);
 			path = "Animations-and-Magic-TricksTests";
 			sourceTree = "<group>";
@@ -159,6 +167,7 @@
 		090C368128C66C7900053CF4 /* VoronoiDiagram */ = {
 			isa = PBXGroup;
 			children = (
+				09D8B4BD28CA3F1A0070D1AC /* View */,
 				090C368A28C6708C00053CF4 /* PointView */,
 				090C368328C66D8400053CF4 /* VoronoiDiagramBuilder */,
 			);
@@ -179,6 +188,7 @@
 			children = (
 				090C369728C68F2100053CF4 /* Locus */,
 				090C369028C6862E00053CF4 /* VoronoiDiagramBuilder.swift */,
+				09D8B4B828CA35F20070D1AC /* LocusesView.swift */,
 			);
 			path = VoronoiDiagramBuilder;
 			sourceTree = "<group>";
@@ -188,6 +198,7 @@
 			children = (
 				090C368E28C67F3000053CF4 /* CGRect.swift */,
 				090C369528C68E9600053CF4 /* CGPoint.swift */,
+				09D8B4BE28CA5B850070D1AC /* Array.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -236,6 +247,7 @@
 		09D8B4B028C903090070D1AC /* AnalyticalGeometry */ = {
 			isa = PBXGroup;
 			children = (
+				090C368628C66EB500053CF4 /* Extensions */,
 				09D8B4B728C921030070D1AC /* LinesRelationship */,
 				090C369228C68D8D00053CF4 /* Line */,
 				09D8B4B128C9033C0070D1AC /* AnalyticalGeometry.swift */,
@@ -249,6 +261,22 @@
 				09D8B4B528C920FE0070D1AC /* LinesRelationship.swift */,
 			);
 			path = LinesRelationship;
+			sourceTree = "<group>";
+		};
+		09D8B4BA28CA37DA0070D1AC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				09D8B4BB28CA37E30070D1AC /* UIColor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		09D8B4BD28CA3F1A0070D1AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				090C365528C6689600053CF4 /* VoronoiDiagramViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -385,6 +413,8 @@
 				090C365228C6689600053CF4 /* AppDelegate.swift in Sources */,
 				090C365428C6689600053CF4 /* SceneDelegate.swift in Sources */,
 				090C368D28C670B400053CF4 /* PointViewModel.swift in Sources */,
+				09D8B4BC28CA37E30070D1AC /* UIColor.swift in Sources */,
+				09D8B4BF28CA5B850070D1AC /* Array.swift in Sources */,
 				090C368928C66ED900053CF4 /* Color.swift in Sources */,
 				090C368528C66E1900053CF4 /* PointView.swift in Sources */,
 				090C369428C68D9700053CF4 /* Line.swift in Sources */,
@@ -394,6 +424,7 @@
 				09D8B4B628C920FE0070D1AC /* LinesRelationship.swift in Sources */,
 				090C369628C68E9600053CF4 /* CGPoint.swift in Sources */,
 				090C368F28C67F3000053CF4 /* CGRect.swift in Sources */,
+				09D8B4B928CA35F20070D1AC /* LocusesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09D8B4C128CA5CAA0070D1AC /* ArrayTests.swift in Sources */,
 				090C369B28C7AB7900053CF4 /* VoronoiDiagramBuilderTests.swift in Sources */,
 				09D8B4B428C904B40070D1AC /* AnalyticalGeometryTests.swift in Sources */,
 				090C369D28C7ABF100053CF4 /* CGPointTests.swift in Sources */,
