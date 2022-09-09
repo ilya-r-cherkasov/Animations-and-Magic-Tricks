@@ -51,6 +51,13 @@ private extension LocusesView {
             subPath.fill()
             path.append(subPath)
         }
+//        var vertexes = locus.vertexes
+//        path.move(to: vertexes.removeFirst())
+//        vertexes.forEach { vertex in
+//            path.addLine(to: vertex)
+//        }
+//        path.close()
+//        path.fill()
         return path
     }
 

@@ -12,33 +12,36 @@ final class VoronoiDiagramBuilder {
 
     // MARK: - Properties
 
-    private(set) var sites = [CGPoint]() {
-        didSet {
-            calculateLocuses()
-        }
-    }
+    var onLocused: (([Locus]) -> Void)?
 
-    private(set) var locuses = [Locus]()
+    private(set) var sites = [CGPoint]()
 
     // MARK: - Private properties
 
-    private var edgesLines: [Line] {
-        [
-            AG.topEdgeLine,
-            AG.leadingEdgeLine,
-            AG.trailingEdgeLine,
-            AG.bottomEdgeLine
-        ]
-    }
+    private var locuses = [Locus]()
+    private var group = DispatchGroup()
+    private let lock = NSLock()
+
+    private var calculationsQueue = DispatchQueue(
+        label: "calculationsQueue",
+        qos: .userInteractive,
+        attributes: .concurrent
+    )
 
     // MARK: - Methods
 
     func addSite(_ site: CGPoint) {
         sites.append(site)
+        calculateLocuses()
     }
 
     func addSites(_ sites: [CGPoint]) {
         self.sites += sites
+        calculateLocuses()
+    }
+
+    func reset() {
+        sites.removeAll()
     }
 
 }
@@ -50,43 +53,48 @@ private extension VoronoiDiagramBuilder {
     func calculateLocuses() {
         locuses.removeAll()
         sites.forEach { site in
-            locuses.append(
-                Locus(
-                    site: site,
-                    vertexes: calcutateLocusVertexes(for: site)
-                )
+            calculationsQueue.async(
+                execute: getWorkItemForVartexCalculation(with: site)
             )
+        }
+        group.notify(queue: .main) { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.onLocused?(self.locuses)
         }
     }
 
     func calculateMedianPerpendiculars(for site: CGPoint) -> [Line] {
-        let otherPoints = sites.filter { $0 != site }
-        var lines = [Line]()
-        otherPoints.forEach {
-            lines.append(AG.calculateMedianPerpendicular(p1: $0, p2: site))
-        }
-        return lines
+        sites
+            .filter {
+                $0 != site
+            }
+            .map {
+                AG.calculateMedianPerpendicular(p1: $0, p2: site)
+            }
     }
 
-    func calculateIntersectionPoints(for site: CGPoint) -> [CGPoint] {
-        var perpendiculars = calculateMedianPerpendiculars(for: site)
+    func calculateIntersectionPoints(for site: CGPoint, perpendiculars: inout [Line]) -> [CGPoint] {
         var intersectionPoints = [CGPoint]()
-        perpendiculars.forEach { perpendicular in
-            let otherPerpendiculars = perpendiculars.filter { $0 != perpendicular }
-            otherPerpendiculars.forEach { otherPerpendicular in
-                let relationship = AG.calculateLinesRelationship(for: perpendicular, and: otherPerpendicular)
+        let endIndex = perpendiculars.endIndex
+        for index in 1...(endIndex - 1) {
+            let perpendicular = perpendiculars[index - 1]
+            intersectionPoints += perpendiculars[index...(endIndex - 1)].compactMap {
+                let relationship = AG.calculateLinesRelationship(for: perpendicular, and: $0)
                 if case .intersect(let intersectionPoint) = relationship {
-                    intersectionPoints.append(intersectionPoint)
+                    return intersectionPoint
                 }
+                return nil
             }
-            perpendiculars.removeFirst()
+
         }
         return intersectionPoints
     }
 
     func calculateEdgesPoints(with lines: [Line]) -> [CGPoint] {
         var edgesPoints = [CGPoint]()
-        edgesLines.forEach { edgeLine in
+        AG.edgesLines.forEach { edgeLine in
             lines.forEach { line in
                 let relationship = AG.calculateLinesRelationship(for: edgeLine, and: line)
                 if
@@ -104,11 +112,11 @@ private extension VoronoiDiagramBuilder {
 
     func calcutateLocusVertexes(for site: CGPoint) -> [CGPoint] {
         var vertexes = [CGPoint]()
-        let perpendiculars = calculateMedianPerpendiculars(for: site)
-        let intersectionPoints = calculateIntersectionPoints(for: site)
+        var perpendiculars = calculateMedianPerpendiculars(for: site)
+        let intersectionPoints = calculateIntersectionPoints(for: site, perpendiculars: &perpendiculars)
         let edgesPoints = calculateEdgesPoints(with: perpendiculars)
         (intersectionPoints + edgesPoints).forEach { point in
-            if AG.detectTwoPointsBelongToSameHalfPlanes(
+            if AG.pointsBelongToSameHalfPlanes(
                 lines: perpendiculars,
                 p1: point,
                 p2: site
@@ -119,6 +127,20 @@ private extension VoronoiDiagramBuilder {
         return vertexes
     }
 
+    func getWorkItemForVartexCalculation(with site: CGPoint) -> DispatchWorkItem {
+        group.enter()
+        return DispatchWorkItem { [weak self] in
+            guard let self = self else {
+                return
+            }
+            let vertexes = self.calcutateLocusVertexes(for: site)
+            self.lock.lock()
+            self.locuses.append(Locus(site: site, vertexes: vertexes))
+            self.lock.unlock()
+            self.group.leave()
+        }
+    }
+
 }
 
 // MARK: - API for Tests
@@ -127,8 +149,9 @@ private extension VoronoiDiagramBuilder {
 
 extension VoronoiDiagramBuilder {
 
-    func _testableCalculateIntersectionPoints(for site: CGPoint) -> [CGPoint] {
-        calculateIntersectionPoints(for: site)
+    func _testableCalculateIntersectionPoints(for site: CGPoint, perpendiculars: [Line]) -> [CGPoint] {
+        var perpendiculars = perpendiculars
+        return calculateIntersectionPoints(for: site, perpendiculars: &perpendiculars)
     }
 
 }

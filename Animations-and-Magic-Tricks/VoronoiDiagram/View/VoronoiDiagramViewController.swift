@@ -12,6 +12,7 @@ class VoronoiDiagramViewController: UIViewController {
     // MARK: - Subviews
 
     private let locusesView = LocusesView(frame: UIScreen.main.bounds)
+    private let imageView = UIImageView(frame: UIScreen.main.bounds.insetBy(dx: 5, dy: 5))
 
     // MARK: - Private properties
 
@@ -25,8 +26,10 @@ class VoronoiDiagramViewController: UIViewController {
         view.backgroundColor = .white
         configureTapGecture()
         view.addGestureRecognizer(tapGecture)
-        view.addSubview(locusesView)
+        view.addSubview(imageView)
         locusesView.backgroundColor = .lightGray
+        imageView.contentMode = .scaleAspectFit
+        view.backgroundColor = .black
         generateDiagram()
     }
 
@@ -51,13 +54,20 @@ private extension VoronoiDiagramViewController {
         point.configure()
         point.center = coordinate
         diagramBuilder.addSite(coordinate)
-        locusesView.locuses = diagramBuilder.locuses
+        diagramBuilder.onLocused = { [weak self] locused in
+            self?.locusesView.locuses = locused
+        }
     }
 
     func generateDiagram() {
-        let sites = CGPoint.randoms(in: UIScreen.main.bounds, count: 20)
+        diagramBuilder.reset()
+        let sites = CGPoint.randoms(in: UIScreen.main.bounds, count: 50)
         diagramBuilder.addSites(sites)
-        locusesView.locuses = diagramBuilder.locuses
+        diagramBuilder.onLocused = { [weak self] locused in
+            self?.locusesView.locuses = locused
+        }
+        let locusesImage = locusesView.asImage()
+        imageView.applyCutMask(image: locusesImage, cutMask: UIImage(named: "giraffe")!)
     }
 
 }
@@ -68,7 +78,7 @@ private extension VoronoiDiagramViewController {
 private extension VoronoiDiagramViewController {
 
     func handleTap(sender: UITapGestureRecognizer) {
-        addPoint(with: sender.location(in: view))
+        generateDiagram()
     }
 
 }

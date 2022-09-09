@@ -14,33 +14,42 @@ class AnalyticalGeometry {
 
     // MARK: - Static roperties
 
-    static var topEdgeLine: Line {
+    static var topEdgeLine: Line = {
         AG.calculateLineBy(
             p1: .zero,
             p2: CGPoint(x: screenBounds.maxX, y: .zero)
         )
-    }
+    }()
 
-    static var leadingEdgeLine: Line {
+    static var leadingEdgeLine: Line = {
         AG.calculateLineBy(
             p1: .zero,
             p2: CGPoint(x: .zero, y: screenBounds.maxY)
         )
-    }
+    }()
 
-    static var trailingEdgeLine: Line {
+    static var trailingEdgeLine: Line = {
         AG.calculateLineBy(
             p1: CGPoint(x: screenBounds.maxX, y: .zero),
             p2: CGPoint(x: screenBounds.maxX, y: screenBounds.maxY)
         )
-    }
+    }()
 
-    static var bottomEdgeLine: Line {
+    static var bottomEdgeLine: Line = {
         AG.calculateLineBy(
             p1: CGPoint(x: .zero, y: screenBounds.maxY),
             p2: CGPoint(x: screenBounds.maxX, y: screenBounds.maxY)
         )
-    }
+    }()
+
+    static var edgesLines: [Line] = {
+        [
+            AG.topEdgeLine,
+            AG.leadingEdgeLine,
+            AG.trailingEdgeLine,
+            AG.bottomEdgeLine
+        ]
+    }()
 
     // MARK: - Private properties
 
@@ -80,9 +89,9 @@ class AnalyticalGeometry {
         return .intersect(intersectPoint)
     }
 
-    static func detectTwoPointsBelongToSameHalfPlane(line: Line,
-                                                     p1: CGPoint,
-                                                     p2: CGPoint) -> Bool {
+    static func pointsBelongToSameHalfPlane(line: Line,
+                                            p1: CGPoint,
+                                            p2: CGPoint) -> Bool {
         if p1.belong(to: line) || p2.belong(to: line) {
             return true
         } else {
@@ -90,10 +99,13 @@ class AnalyticalGeometry {
         }
     }
 
-    static func detectTwoPointsBelongToSameHalfPlanes(lines: [Line], p1: CGPoint, p2: CGPoint) -> Bool {
-        lines.reduce(true) { partialResult, line in
-            partialResult && detectTwoPointsBelongToSameHalfPlane(line: line, p1: p1, p2: p2)
+    static func pointsBelongToSameHalfPlanes(lines: [Line], p1: CGPoint, p2: CGPoint) -> Bool {
+        for line in lines {
+            if !pointsBelongToSameHalfPlane(line: line, p1: p1, p2: p2) {
+                return false
+            }
         }
+        return true
     }
 
 }

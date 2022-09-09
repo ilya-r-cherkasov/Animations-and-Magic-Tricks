@@ -32,6 +32,8 @@
 		09D8B4BC28CA37E30070D1AC /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8B4BB28CA37E30070D1AC /* UIColor.swift */; };
 		09D8B4BF28CA5B850070D1AC /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8B4BE28CA5B850070D1AC /* Array.swift */; };
 		09D8B4C128CA5CAA0070D1AC /* ArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8B4C028CA5CAA0070D1AC /* ArrayTests.swift */; };
+		09D8B4C328CB661C0070D1AC /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8B4C228CB661C0070D1AC /* UIImage.swift */; };
+		09D8B4C528CB66BA0070D1AC /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8B4C428CB66BA0070D1AC /* UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		09D8B4BB28CA37E30070D1AC /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		09D8B4BE28CA5B850070D1AC /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		09D8B4C028CA5CAA0070D1AC /* ArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayTests.swift; sourceTree = "<group>"; };
+		09D8B4C228CB661C0070D1AC /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		09D8B4C428CB66BA0070D1AC /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +271,8 @@
 			isa = PBXGroup;
 			children = (
 				09D8B4BB28CA37E30070D1AC /* UIColor.swift */,
+				09D8B4C228CB661C0070D1AC /* UIImage.swift */,
+				09D8B4C428CB66BA0070D1AC /* UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -415,6 +421,7 @@
 				090C368D28C670B400053CF4 /* PointViewModel.swift in Sources */,
 				09D8B4BC28CA37E30070D1AC /* UIColor.swift in Sources */,
 				09D8B4BF28CA5B850070D1AC /* Array.swift in Sources */,
+				09D8B4C328CB661C0070D1AC /* UIImage.swift in Sources */,
 				090C368928C66ED900053CF4 /* Color.swift in Sources */,
 				090C368528C66E1900053CF4 /* PointView.swift in Sources */,
 				090C369428C68D9700053CF4 /* Line.swift in Sources */,
@@ -424,6 +431,7 @@
 				09D8B4B628C920FE0070D1AC /* LinesRelationship.swift in Sources */,
 				090C369628C68E9600053CF4 /* CGPoint.swift in Sources */,
 				090C368F28C67F3000053CF4 /* CGRect.swift in Sources */,
+				09D8B4C528CB66BA0070D1AC /* UIView.swift in Sources */,
 				09D8B4B928CA35F20070D1AC /* LocusesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

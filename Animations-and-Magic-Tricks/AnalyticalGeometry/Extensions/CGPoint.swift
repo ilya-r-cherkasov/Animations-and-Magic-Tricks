@@ -15,10 +15,6 @@ extension CGPoint {
         static var epsilon: CGFloat = 1e-5
     }
 
-    private var acceptableRange: ClosedRange<CGFloat> {
-        -Constants.epsilon...Constants.epsilon
-    }
-
     // MARK: - Static methods
 
     static func random(in rect: CGRect) -> CGPoint {
@@ -46,7 +42,19 @@ extension CGPoint {
     }
 
     func belong(to line: Line) -> Bool {
-        acceptableRange.contains(line.substitute(point: self))
+
+        /*
+
+         (-Constants.epsilon ... 0 ... Constants.epsilon)
+                              |
+                            result
+
+         In all cases if result hit in range expression
+         (result + Constants.epsilon) * (result - Constants.epsilon) <= 0
+         */
+        
+        let result = line.substitute(point: self)
+        return (result + Constants.epsilon) * (result - Constants.epsilon) <= 0
     }
 
 }

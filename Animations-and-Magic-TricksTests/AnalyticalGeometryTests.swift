@@ -56,7 +56,7 @@ final class AnalyticalGeometryTests: XCTestCase {
 
     func testTwoPointsBelongToSameHalfPlaneNum1() {
         let line = Line(A: -3, B: 1, C: -16)
-        let result = AG.detectTwoPointsBelongToSameHalfPlane(
+        let result = AG.pointsBelongToSameHalfPlane(
             line: line,
             p1: CGPoint(x: -5.0, y: 6.0),
             p2: CGPoint(x: -6.0, y: 4.0)
@@ -66,7 +66,7 @@ final class AnalyticalGeometryTests: XCTestCase {
 
     func testTwoPointsBelongToSameHalfPlaneNum2() {
         let line = Line(A: -3, B: 1, C: -16)
-        let result = AG.detectTwoPointsBelongToSameHalfPlane(
+        let result = AG.pointsBelongToSameHalfPlane(
             line: line,
             p1: CGPoint(x: -5.0, y: 6.0),
             p2: CGPoint(x: -6.0, y: 4.0)
@@ -76,7 +76,7 @@ final class AnalyticalGeometryTests: XCTestCase {
 
     func testTwoPointsDontBelongToSameHalfPlane() {
         let line = Line(A: -3, B: 1, C: -16)
-        let result = AG.detectTwoPointsBelongToSameHalfPlane(
+        let result = AG.pointsBelongToSameHalfPlane(
             line: line,
             p1: CGPoint(x: -5.0, y: 6.0),
             p2: CGPoint(x: -2.0, y: 2.0)
