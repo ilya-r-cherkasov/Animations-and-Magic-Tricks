@@ -11,7 +11,7 @@ final class LocusesView: UIView {
 
     // MARK: - Properties
 
-    var locuses = [[CGPoint]]() {
+    var locuses = [Locus]() {
         didSet {
             setNeedsDisplay()
         }
@@ -39,21 +39,10 @@ final class LocusesView: UIView {
 
 private extension LocusesView {
 
-    func makeLocusPath(from locus: [CGPoint]) -> UIBezierPath {
-        if locus.isEmpty { return UIBezierPath() }
-        //var locus = locus.sortAsVertex()
+    func makeLocusPath(from locus: Locus) -> UIBezierPath {
+        if locus.vertexes.isEmpty { return UIBezierPath() }
         let path = UIBezierPath()
-//        path.move(to: locus.removeFirst())
-//        locus.forEach { point in
-//            path.addLine(to: point)
-//        }
-//        locus.forEach { startPoint in
-//            path.move(to: startPoint)
-//            locus.forEach { point in
-//                path.addLine(to: point)
-//            }
-//        }
-        getAllTriangles(from: locus).forEach { triangle in
+        getAllTriangles(from: locus.vertexes).forEach { triangle in
             let subPath = UIBezierPath()
             subPath.move(to: triangle[0])
             subPath.addLine(to: triangle[1])
@@ -65,6 +54,8 @@ private extension LocusesView {
         return path
     }
 
+    //TODO: - non-optimal solution
+    //wiil changed to sortAsVertex()
     func getAllTriangles(from points: [CGPoint]) -> [[CGPoint]] {
         var triangles = [[CGPoint]]()
         points.forEach { p1 in

@@ -12,7 +12,12 @@ final class VoronoiDiagramBuilder {
 
     // MARK: - Properties
 
-    private(set) var points = [CGPoint]()
+    private(set) var sites = [CGPoint]() {
+        didSet {
+            calculateLocuses()
+        }
+    }
+
     private(set) var locuses = [Locus]()
 
     // MARK: - Private properties
@@ -28,12 +33,12 @@ final class VoronoiDiagramBuilder {
 
     // MARK: - Methods
 
-    func addPoint(_ point: CGPoint) {
-        points.append(point)
+    func addSite(_ site: CGPoint) {
+        sites.append(site)
     }
 
-    func testCalcutateLocusVertexes(for site: CGPoint) -> [CGPoint] {
-        calcutateLocusVertexes(for: site)
+    func addSites(_ sites: [CGPoint]) {
+        self.sites += sites
     }
 
 }
@@ -42,8 +47,20 @@ final class VoronoiDiagramBuilder {
 
 private extension VoronoiDiagramBuilder {
 
+    func calculateLocuses() {
+        locuses.removeAll()
+        sites.forEach { site in
+            locuses.append(
+                Locus(
+                    site: site,
+                    vertexes: calcutateLocusVertexes(for: site)
+                )
+            )
+        }
+    }
+
     func calculateMedianPerpendiculars(for site: CGPoint) -> [Line] {
-        let otherPoints = points.filter { $0 != site }
+        let otherPoints = sites.filter { $0 != site }
         var lines = [Line]()
         otherPoints.forEach {
             lines.append(AG.calculateMedianPerpendicular(p1: $0, p2: site))

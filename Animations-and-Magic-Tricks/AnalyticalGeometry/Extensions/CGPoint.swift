@@ -19,6 +19,23 @@ extension CGPoint {
         -Constants.epsilon...Constants.epsilon
     }
 
+    // MARK: - Static methods
+
+    static func random(in rect: CGRect) -> CGPoint {
+        CGPoint(
+            x: CGFloat.random(in: rect.minX...rect.maxX),
+            y: CGFloat.random(in: rect.minY...rect.maxY)
+        )
+    }
+
+    static func randoms(in rect: CGRect, count: Int)  -> [CGPoint] {
+        var randoms = [CGPoint]()
+        for _ in 1...count {
+            randoms.append(.random(in: rect))
+        }
+        return randoms
+    }
+
     // MARK: - Methods
 
     func midpoint(to point: CGPoint) -> CGPoint {

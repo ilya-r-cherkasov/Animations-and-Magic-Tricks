@@ -18,7 +18,7 @@ final class VoronoiDiagramBuilderTests: XCTestCase {
             CGPoint(x: 2, y: 6),
             CGPoint(x: 6, y: -8)
         ]
-        points.forEach { builder.addPoint($0) }
+        points.forEach { builder.addSite($0) }
         let calculatedIntersectionPoints = builder._testableCalculateIntersectionPoints(for: CGPoint(x: -6, y: -2))
         let trueIntersectionPoints = [
             CGPoint(x: 1, y: -1),

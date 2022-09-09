@@ -27,6 +27,7 @@ class VoronoiDiagramViewController: UIViewController {
         view.addGestureRecognizer(tapGecture)
         view.addSubview(locusesView)
         locusesView.backgroundColor = .lightGray
+        generateDiagram()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -49,12 +50,14 @@ private extension VoronoiDiagramViewController {
         view.addSubview(point)
         point.configure()
         point.center = coordinate
-        diagramBuilder.addPoint(coordinate)
-        locusesView.locuses.removeAll()
-        diagramBuilder.points.forEach { cite in
-            let vertexes = diagramBuilder.testCalcutateLocusVertexes(for: cite)
-            locusesView.locuses.append(vertexes)
-        }
+        diagramBuilder.addSite(coordinate)
+        locusesView.locuses = diagramBuilder.locuses
+    }
+
+    func generateDiagram() {
+        let sites = CGPoint.randoms(in: UIScreen.main.bounds, count: 20)
+        diagramBuilder.addSites(sites)
+        locusesView.locuses = diagramBuilder.locuses
     }
 
 }
