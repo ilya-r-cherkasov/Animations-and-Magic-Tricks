@@ -9,12 +9,6 @@ import CoreGraphics
 
 extension CGPoint {
 
-    // MARK: - Nested types
-
-    private enum Constants {
-        static var epsilon: CGFloat = 1e-5
-    }
-
     // MARK: - Static methods
 
     static func random(in rect: CGRect) -> CGPoint {
@@ -44,17 +38,17 @@ extension CGPoint {
     func belong(to line: Line) -> Bool {
 
         /*
-
-         (-Constants.epsilon ... 0 ... Constants.epsilon)
-                              |
-                            result
+         1e-5 - epsilon
+         (-1e-5 ... 0 ... 1e-5)
+                  |
+                result
 
          In all cases if result hit in range expression
          (result + Constants.epsilon) * (result - Constants.epsilon) <= 0
          */
         
         let result = line.substitute(point: self)
-        return (result + Constants.epsilon) * (result - Constants.epsilon) <= 0
+        return (result + 1e-5) * (result - 1e-5) <= 0
     }
 
 }

@@ -10,7 +10,7 @@ import UIKit
 extension UIImageView {
 
     func applyCutMask(image: UIImage, cutMask: UIImage) {
-        let size = self.frame.size
+        let size = cutMask.size.applying(.init(scaleX: 0.3, y: 0.3))
         let rect =  CGRect(origin: CGPoint(x:0,y:0), size: size)
         UIGraphicsBeginImageContext(size)
         image.draw(in: rect)

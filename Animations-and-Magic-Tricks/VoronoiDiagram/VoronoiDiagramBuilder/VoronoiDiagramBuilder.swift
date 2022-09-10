@@ -54,7 +54,7 @@ private extension VoronoiDiagramBuilder {
         locuses.removeAll()
         sites.forEach { site in
             calculationsQueue.async(
-                execute: getWorkItemForVartexCalculation(with: site)
+                execute: getWorkItemForVertexCalculation(with: site)
             )
         }
         group.notify(queue: .main) { [weak self] in
@@ -127,7 +127,7 @@ private extension VoronoiDiagramBuilder {
         return vertexes
     }
 
-    func getWorkItemForVartexCalculation(with site: CGPoint) -> DispatchWorkItem {
+    func getWorkItemForVertexCalculation(with site: CGPoint) -> DispatchWorkItem {
         group.enter()
         return DispatchWorkItem { [weak self] in
             guard let self = self else {
