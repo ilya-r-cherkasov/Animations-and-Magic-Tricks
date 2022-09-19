@@ -32,9 +32,15 @@ class VoronoiDiagramViewController: UIViewController {
         view.backgroundColor = .black
         configureTapGecture()
         view.addGestureRecognizer(tapGecture)
-        view.addSubview(imageView)
-        imageView.contentMode = .center
-        generateDiagramImage()
+        //view.addSubview(imageView)
+        //imageView.contentMode = .center
+        view.addSubview(locusesView)
+        let sites = CGPoint.randoms(in: UIScreen.main.bounds, count: 100)
+        diagramBuilder.addSites(sites)
+        diagramBuilder.onLocused = { [weak self] locused in
+            self?.locusesView.locuses = locused
+        }
+        //generateDiagramImage()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -106,7 +112,13 @@ private extension VoronoiDiagramViewController {
 private extension VoronoiDiagramViewController {
 
     func handleTap(sender: UITapGestureRecognizer) {
-        generateDiagramImage()
+        //generateDiagramImage()
+        let sites = CGPoint.randoms(in: UIScreen.main.bounds, count: 100)
+        diagramBuilder.reset()
+        diagramBuilder.addSites(sites)
+        diagramBuilder.onLocused = { [weak self] locused in
+            self?.locusesView.locuses = locused
+        }
     }
 
 }

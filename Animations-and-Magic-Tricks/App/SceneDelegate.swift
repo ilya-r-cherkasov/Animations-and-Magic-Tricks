@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else {
             return
         }
-        let viewController = LorenzViewController()
+        let viewController = VoronoiDiagramViewController()
         let navigation = UINavigationController(rootViewController: viewController)
         window = UIWindow(windowScene: scene)
         window?.rootViewController = navigation

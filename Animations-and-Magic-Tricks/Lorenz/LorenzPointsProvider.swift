@@ -9,9 +9,9 @@ import CoreGraphics
 
 final class LorenzPointsProvider {
 
-    var x: CGFloat = 3.051522
-    var y: CGFloat = 1.582542
-    var z: CGFloat = 15.62388
+    var x: CGFloat = .random(in: 2...4)
+    var y: CGFloat = .random(in: 1...3)
+    var z: CGFloat = .random(in: 10...20)
     var x1: CGFloat = .zero
     var y1: CGFloat = .zero
     var z1: CGFloat = .zero

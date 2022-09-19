@@ -25,6 +25,10 @@
 		090C369928C68F3600053CF4 /* Locus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C369828C68F3600053CF4 /* Locus.swift */; };
 		090C369B28C7AB7900053CF4 /* VoronoiDiagramBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C369A28C7AB7900053CF4 /* VoronoiDiagramBuilderTests.swift */; };
 		090C369D28C7ABF100053CF4 /* CGPointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090C369C28C7ABF100053CF4 /* CGPointTests.swift */; };
+		091FF0F628D7471200BA35F6 /* HighOrderFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091FF0F528D7471200BA35F6 /* HighOrderFunctions.swift */; };
+		091FF0FB28D75FE000BA35F6 /* C Functions.c in Sources */ = {isa = PBXBuildFile; fileRef = 091FF0FA28D75FE000BA35F6 /* C Functions.c */; };
+		09AEFAF028CFCE1100DCB2AB /* ColorChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AEFAEF28CFCE1100DCB2AB /* ColorChanger.swift */; };
+		09AEFAF228CFCE2A00DCB2AB /* ColorChangerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AEFAF128CFCE2A00DCB2AB /* ColorChangerViewController.swift */; };
 		09D8B4B228C9033C0070D1AC /* AnalyticalGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8B4B128C9033C0070D1AC /* AnalyticalGeometry.swift */; };
 		09D8B4B428C904B40070D1AC /* AnalyticalGeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8B4B328C904B40070D1AC /* AnalyticalGeometryTests.swift */; };
 		09D8B4B628C920FE0070D1AC /* LinesRelationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D8B4B528C920FE0070D1AC /* LinesRelationship.swift */; };
@@ -79,6 +83,12 @@
 		090C369828C68F3600053CF4 /* Locus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locus.swift; sourceTree = "<group>"; };
 		090C369A28C7AB7900053CF4 /* VoronoiDiagramBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoronoiDiagramBuilderTests.swift; sourceTree = "<group>"; };
 		090C369C28C7ABF100053CF4 /* CGPointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPointTests.swift; sourceTree = "<group>"; };
+		091FF0F528D7471200BA35F6 /* HighOrderFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighOrderFunctions.swift; sourceTree = "<group>"; };
+		091FF0F828D75FDF00BA35F6 /* Animations-and-Magic-Tricks-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Animations-and-Magic-Tricks-Bridging-Header.h"; sourceTree = "<group>"; };
+		091FF0F928D75FE000BA35F6 /* C Functions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "C Functions.h"; sourceTree = "<group>"; };
+		091FF0FA28D75FE000BA35F6 /* C Functions.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = "C Functions.c"; sourceTree = "<group>"; };
+		09AEFAEF28CFCE1100DCB2AB /* ColorChanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChanger.swift; sourceTree = "<group>"; };
+		09AEFAF128CFCE2A00DCB2AB /* ColorChangerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChangerViewController.swift; sourceTree = "<group>"; };
 		09D8B4B128C9033C0070D1AC /* AnalyticalGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticalGeometry.swift; sourceTree = "<group>"; };
 		09D8B4B328C904B40070D1AC /* AnalyticalGeometryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticalGeometryTests.swift; sourceTree = "<group>"; };
 		09D8B4B528C920FE0070D1AC /* LinesRelationship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesRelationship.swift; sourceTree = "<group>"; };
@@ -141,6 +151,8 @@
 		090C365028C6689600053CF4 /* Animations-and-Magic-Tricks */ = {
 			isa = PBXGroup;
 			children = (
+				091FF0F728D74E0700BA35F6 /* C Functions */,
+				09AEFAEE28CFCE0400DCB2AB /* ColorChanger */,
 				09D8B4C628CCE79F0070D1AC /* Lorenz */,
 				09D8B4BA28CA37DA0070D1AC /* Extensions */,
 				09D8B4B028C903090070D1AC /* AnalyticalGeometry */,
@@ -157,6 +169,7 @@
 		090C366728C6689800053CF4 /* Animations-and-Magic-TricksTests */ = {
 			isa = PBXGroup;
 			children = (
+				091FF0F428D746F200BA35F6 /* Perfomance */,
 				090C366828C6689800053CF4 /* Animations_and_Magic_TricksTests.swift */,
 				090C369A28C7AB7900053CF4 /* VoronoiDiagramBuilderTests.swift */,
 				09D8B4B328C904B40070D1AC /* AnalyticalGeometryTests.swift */,
@@ -253,6 +266,33 @@
 				090C369828C68F3600053CF4 /* Locus.swift */,
 			);
 			path = Locus;
+			sourceTree = "<group>";
+		};
+		091FF0F428D746F200BA35F6 /* Perfomance */ = {
+			isa = PBXGroup;
+			children = (
+				091FF0F528D7471200BA35F6 /* HighOrderFunctions.swift */,
+			);
+			path = Perfomance;
+			sourceTree = "<group>";
+		};
+		091FF0F728D74E0700BA35F6 /* C Functions */ = {
+			isa = PBXGroup;
+			children = (
+				091FF0F928D75FE000BA35F6 /* C Functions.h */,
+				091FF0FA28D75FE000BA35F6 /* C Functions.c */,
+				091FF0F828D75FDF00BA35F6 /* Animations-and-Magic-Tricks-Bridging-Header.h */,
+			);
+			path = "C Functions";
+			sourceTree = "<group>";
+		};
+		09AEFAEE28CFCE0400DCB2AB /* ColorChanger */ = {
+			isa = PBXGroup;
+			children = (
+				09AEFAEF28CFCE1100DCB2AB /* ColorChanger.swift */,
+				09AEFAF128CFCE2A00DCB2AB /* ColorChangerViewController.swift */,
+			);
+			path = ColorChanger;
 			sourceTree = "<group>";
 		};
 		09D8B4B028C903090070D1AC /* AnalyticalGeometry */ = {
@@ -439,13 +479,16 @@
 				09D8B4D028CCEDCC0070D1AC /* LorenzView.swift in Sources */,
 				090C368D28C670B400053CF4 /* PointViewModel.swift in Sources */,
 				09D8B4BC28CA37E30070D1AC /* UIColor.swift in Sources */,
+				09AEFAF028CFCE1100DCB2AB /* ColorChanger.swift in Sources */,
 				09D8B4BF28CA5B850070D1AC /* Array.swift in Sources */,
 				09D8B4C328CB661C0070D1AC /* UIImage.swift in Sources */,
 				090C368928C66ED900053CF4 /* Color.swift in Sources */,
+				091FF0FB28D75FE000BA35F6 /* C Functions.c in Sources */,
 				090C368528C66E1900053CF4 /* PointView.swift in Sources */,
 				090C369428C68D9700053CF4 /* Line.swift in Sources */,
 				090C369128C6862E00053CF4 /* VoronoiDiagramBuilder.swift in Sources */,
 				090C369928C68F3600053CF4 /* Locus.swift in Sources */,
+				09AEFAF228CFCE2A00DCB2AB /* ColorChangerViewController.swift in Sources */,
 				09D8B4B228C9033C0070D1AC /* AnalyticalGeometry.swift in Sources */,
 				09D8B4CE28CCEDA50070D1AC /* LorenzViewController.swift in Sources */,
 				09D8B4B628C920FE0070D1AC /* LinesRelationship.swift in Sources */,
@@ -465,6 +508,7 @@
 				090C369B28C7AB7900053CF4 /* VoronoiDiagramBuilderTests.swift in Sources */,
 				09D8B4B428C904B40070D1AC /* AnalyticalGeometryTests.swift in Sources */,
 				090C369D28C7ABF100053CF4 /* CGPointTests.swift in Sources */,
+				091FF0F628D7471200BA35F6 /* HighOrderFunctions.swift in Sources */,
 				090C366928C6689800053CF4 /* Animations_and_Magic_TricksTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,7 +588,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -561,7 +605,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Debug;
 		};
@@ -603,6 +647,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -643,7 +688,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.surf.cherkasov.Animations-and-Magic-Tricks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OBJC_BRIDGING_HEADER = "Animations-and-Magic-Tricks/C Functions/Animations-and-Magic-Tricks-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -673,6 +719,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.surf.cherkasov.Animations-and-Magic-Tricks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Animations-and-Magic-Tricks/C Functions/Animations-and-Magic-Tricks-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
