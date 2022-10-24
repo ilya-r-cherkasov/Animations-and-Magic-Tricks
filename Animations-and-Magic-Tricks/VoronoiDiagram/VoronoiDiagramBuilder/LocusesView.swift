@@ -40,6 +40,7 @@ final class LocusesView: UIView {
 private extension LocusesView {
 
     func makeLocusPath(from locus: Locus) -> UIBezierPath {
+        // TODO: - VERY BAD SOLUTION TO DISPLAY POLYGONS
         if locus.vertexes.isEmpty { return UIBezierPath() }
         let path = UIBezierPath()
         getAllTriangles(from: locus.vertexes).forEach { triangle in
