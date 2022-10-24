@@ -78,6 +78,7 @@ private extension VoronoiDiagramBuilder {
     func calculateIntersectionPoints(for site: CGPoint, perpendiculars: inout [Line]) -> [CGPoint] {
         var intersectionPoints = [CGPoint]()
         let endIndex = perpendiculars.endIndex
+        //TODO: - it is necessary to return the old solution, now it's unsafe code
         for index in 1...(endIndex - 1) {
             let perpendicular = perpendiculars[index - 1]
             intersectionPoints += perpendiculars[index...(endIndex - 1)].compactMap {
